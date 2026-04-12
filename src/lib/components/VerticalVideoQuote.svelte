@@ -14,18 +14,20 @@
 {#if quote || src}
   <figure class="my-4 vertical-video-quote">
     <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-12 col-lg-10 col-xxl-8">
+      <div class="row justify-content-start">
+  <div class="col-12">
           <div class="vvq-layout">
 
             {#if src}
-              <!-- Video: hidden on mobile, shown md+ -->
-              <div class="vvq-video d-none d-md-flex">
-                <div class="vvq-video-inner">
-                  <iframe {src} {title} allowfullscreen></iframe>
-                </div>
-              </div>
-            {/if}
+  <!-- Video: hidden on mobile, shown md+ -->
+  <div class="vvq-video d-none d-md-flex">
+    <div class="vvq-video-inner">
+      <div class="vvq-frame">
+        <iframe {src} {title} allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+{/if}
 
             <!-- Quote: always visible -->
             <blockquote class="vvq-quote">
@@ -55,12 +57,14 @@
     flex-direction: row;
     align-items: stretch;
     gap: 2rem;
+    min-height: 400px;
+      justify-content: flex-start;
   }
 
   /* Video column: fixed width to match a 9:16 aspect ratio at a reasonable height */
   .vvq-video {
     flex: 0 0 auto;
-    width: 220px;
+    width: 280px;
     display: flex;
     align-items: center;
   }
@@ -70,22 +74,31 @@
     width: 100%;
     /* 16:9 flipped = 9:16 */
     padding-top: calc(100% * 16 / 9);
-    border-radius: 0.5rem;
-    overflow: hidden;
-    background: #000;
+    border-radius: 0;
+    background: transparent;
   }
 
-  .vvq-video-inner iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
+ .vvq-frame {
+  position: absolute;
+  inset: 0;
+  background-image: url('/photos/verticalframe.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.vvq-frame iframe {
+  position: relative;
+  width: 90%;   /* adjust to fit inside your frame image */
+  height: 90%;  /* adjust to fit inside your frame image */
+  border: none;
+}
   /* Quote column: fills remaining space */
   .vvq-quote {
-    flex: 1 1 0;
+    flex: 3 1 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
