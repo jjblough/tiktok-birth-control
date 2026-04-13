@@ -11,10 +11,7 @@
 Hard-code custom code that should appear BEFORE Google Doc here. 
 This code is in +page.svelte and can be manually coded using HTML or Svelte tags.
 -->
-<header class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100 mb-4" style="background-image:url('hero-example.png');background-size:cover;background-position:center;">
-  <h1 class="text-white text-center display-1">When birth control meets the algorithm</h1>
-  <p class="text-white fw-light text-center">Desperate for information, young women are increasingly turning to TikTok for advice on contraceptives they can trust. Often, they find misinformation and ads instead.</p>
-</header>
+
 
 
 <!-- DO NOT EDIT (except to modify classes). This will become code imported from Google Doc. -->

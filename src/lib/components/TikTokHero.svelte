@@ -3,10 +3,12 @@
    * Example shortcode usage:
    * [[TikTokHero
    *   src1="videos/vid1.mp4" ... src30="videos/vid30.mp4"
-   *   headline="Your headline here"
-   *   deck="A longer description of the story goes here."
+   *   headline="When birth control meets the algorithm"
+   *   deck="Your deck text here."
    *   byline="By Jane Doe"
    * ]]
+   *
+   * 10 columns, each with 3 stacked videos that loop seamlessly bottom to top.
    */
 
   export let src1: string = '';
@@ -46,61 +48,66 @@
   export let deck: string = '';
   export let byline: string = '';
 
-  const delays    = [0, -3, -6, -1.5, -8, -4.5, -2, -7, -5, -9];
-  const durations = [18, 22, 16, 24, 20, 17, 23, 19, 21, 15];
-
-  $: rows = [
-    [src1,  src2,  src3,  src4,  src5,  src6,  src7,  src8,  src9,  src10],
-    [src11, src12, src13, src14, src15, src16, src17, src18, src19, src20],
-    [src21, src22, src23, src24, src25, src26, src27, src28, src29, src30],
+  $: allSrcs = [
+    src1, src2, src3, src4, src5, src6, src7, src8, src9, src10,
+    src11, src12, src13, src14, src15, src16, src17, src18, src19, src20,
+    src21, src22, src23, src24, src25, src26, src27, src28, src29, src30,
   ];
+
+  // Each column gets 3 videos: one from each group of 10
+  $: columns = Array.from({ length: 10 }, (_, i) => [
+    allSrcs[i],
+    allSrcs[i + 10],
+    allSrcs[i + 20],
+  ]);
+
+  const durations = [18, 22, 16, 24, 20, 17, 23, 19, 21, 15];
+  const delays    = [0, -6, -12, -4, -16, -9, -3, -14, -7, -11];
 </script>
 
 <section class="tth-hero">
 
-  <!-- Video grid background -->
   <div class="tth-grid">
-    {#each rows as row, rowIdx}
-      <div class="tth-row">
-        {#each row as src, colIdx}
-          {#if src}
-            <div
-              class="tth-col"
-              style="
-                animation-duration: {durations[colIdx]}s;
-                animation-delay: {delays[colIdx]}s;
-              "
-            >
-              <video
-                src="/{src}"
-                autoplay
-                muted
-                loop
-                playsinline
-                disablepictureinpicture
-              ></video>
-            </div>
-          {/if}
-        {/each}
+    {#each columns as col, colIdx}
+      <div class="tth-col-wrap">
+        <div
+          class="tth-col-strip"
+          style="
+            animation-duration: {durations[colIdx]}s;
+            animation-delay: {delays[colIdx]}s;
+          "
+        >
+          <!-- Videos stacked once -->
+          {#each col as src}
+            {#if src}
+              <video src="/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
+            {/if}
+          {/each}
+          <!-- Duplicate for seamless loop -->
+          {#each col as src}
+            {#if src}
+              <video src="/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
+            {/if}
+          {/each}
+        </div>
       </div>
     {/each}
   </div>
 
-  <!-- Dark overlay -->
-  <div class="tth-overlay"></div>
-
-  <!-- Header box: left third -->
-  <div class="tth-header-box">
-    {#if headline}
-      <h1 class="tth-headline">{headline}</h1>
-    {/if}
-    {#if deck}
-      <p class="tth-deck">{deck}</p>
-    {/if}
-    {#if byline}
-      <p class="tth-byline">{byline}</p>
-    {/if}
-  </div>
+  <!-- Header box -->
+  {#if headline || deck || byline}
+    <div class="tth-header-box">
+      {#if headline}
+        <h1 class="tth-headline">{headline}</h1>
+      {/if}
+      {#if deck}
+        <p class="tth-deck">{deck}</p>
+      {/if}
+      {#if byline}
+        <p class="tth-byline">{byline}</p>
+      {/if}
+    </div>
+  {/if}
 
 </section>
 
@@ -121,58 +128,47 @@
     position: absolute;
     inset: 0;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    gap: 4px;
-  }
-
-  .tth-row {
-    display: flex;
     flex-direction: row;
-    flex: 1 1 0;
     gap: 4px;
-    overflow: hidden;
-  }
-
-  .tth-col {
-    flex: 1 1 0;
-    overflow: hidden;
-    animation: riseUp linear infinite;
-  }
-
-  .tth-col video {
     width: 100%;
     height: 100%;
+  }
+
+  .tth-col-wrap {
+    flex: 1 1 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tth-col-strip {
+    display: flex;
+    flex-direction: column;
+    animation: riseUp linear infinite;
+    will-change: transform;
+  }
+
+  .tth-col-strip video {
+    width: 100%;
+    flex-shrink: 0;
     display: block;
     object-fit: cover;
+    height: calc(100vh / 3);
   }
 
   @keyframes riseUp {
-    0%   { transform: translateY(60%); }
-    100% { transform: translateY(-60%); }
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
   }
 
-  /* Dark overlay behind the text box */
-  .tth-overlay {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  /* Header box: sits in left third, vertically centered */
   .tth-header-box {
     position: absolute;
     top: 50%;
     left: 20%;
     transform: translateY(-50%);
-    width: 45%; /* roughly left third */
+    width: 45%;
     background: #4c86a8;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
     padding: 2rem 2.25rem;
-    border-left: none;
-     border: 2px solid #fff;
+    border: 2px solid #fff;
   }
 
   .tth-headline {
