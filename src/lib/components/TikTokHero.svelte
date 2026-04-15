@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { base } from '$app/paths';
+
   /**
    * Example shortcode usage:
    * [[TikTokHero
@@ -80,13 +82,13 @@
           <!-- Videos stacked once -->
           {#each col as src}
             {#if src}
-              <video src="/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
+              <video src="{base}/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
             {/if}
           {/each}
           <!-- Duplicate for seamless loop -->
           {#each col as src}
             {#if src}
-              <video src="/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
+              <video src="{base}/{src}" autoplay muted loop playsinline disablepictureinpicture></video>
             {/if}
           {/each}
         </div>

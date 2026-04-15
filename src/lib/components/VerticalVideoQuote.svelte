@@ -1,4 +1,5 @@
 <script lang="ts">
+
   /**
    * Example shortcode usage:
    * [[VerticalVideoQuote src="https://example.com/embed" quote="The world changed overnight." attribution="Jane Doe" role="Community Organizer"]]
