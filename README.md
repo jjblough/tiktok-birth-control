@@ -298,3 +298,7 @@ https://<username>.github.io/<repo-name>/
 ```
 
 Google take 1-2 minutes to build the site after activating the Pages feature.
+
+
+## command for sizing down videos on terminal
+ffmpeg -i input.mp4 -vf "scale=-2:300" -c:a copy output.mp4

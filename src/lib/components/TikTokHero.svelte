@@ -95,6 +95,7 @@
       </div>
     {/each}
   </div>
+<div id=headeroverlay> </div>
 
   <!-- Header box -->
   {#if headline || deck || byline}
@@ -110,14 +111,13 @@
       {/if}
     </div>
   {/if}
-
 </section>
 
 <style>
   .tth-hero {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 200vh;
     overflow: hidden;
     background: #151e3f;
     left: 50%;
@@ -194,5 +194,15 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin: 0;
+  }
+
+  #headeroverlay {
+    height: 100%; 
+    width: 100%; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    background: #151e3f; 
+    opacity: 0.5;
   }
 </style>
