@@ -50,6 +50,9 @@
   export let deck: string = '';
   export let byline: string = '';
 
+  let scrollY = 0;
+  let heroElement: HTMLElement;
+
   $: allSrcs = [
     src1, src2, src3, src4, src5, src6, src7, src8, src9, src10,
     src11, src12, src13, src14, src15, src16, src17, src18, src19, src20,
@@ -63,11 +66,17 @@
     allSrcs[i + 20],
   ]);
 
+  $: heroTop = heroElement ? heroElement.getBoundingClientRect().top : 0;
+$: isHeaderVisible = typeof window !== 'undefined' && heroElement ? heroElement.getBoundingClientRect().top + 200 * window.innerHeight > scrollY : true;  // No need for scroll tracking
+  // =======================================================================
+
   const durations = [18, 22, 16, 24, 20, 17, 23, 19, 21, 15];
   const delays    = [0, -6, -12, -4, -16, -9, -3, -14, -7, -11];
 </script>
 
-<section class="tth-hero">
+<svelte:window bind:scrollY />
+
+<section class="tth-hero" bind:this={heroElement}>
 
   <div class="tth-grid">
     {#each columns as col, colIdx}
@@ -95,11 +104,11 @@
       </div>
     {/each}
   </div>
-<div id=headeroverlay> </div>
+  <div id=headeroverlay> </div>
 
   <!-- Header box -->
   {#if headline || deck || byline}
-    <div class="tth-header-box">
+    <div class="tth-header-box" class:hidden={!isHeaderVisible}>
       {#if headline}
         <h1 class="tth-headline">{headline}</h1>
       {/if}
@@ -111,6 +120,7 @@
       {/if}
     </div>
   {/if}
+  <!-- ======================================================= -->
 </section>
 
 <style>
@@ -163,14 +173,21 @@
   }
 
   .tth-header-box {
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 35%;
     left: 20%;
     transform: translateY(-50%);
     width: 45%;
+    height: fit-content;
     background: #4c86a8;
     padding: 2rem 2.25rem;
     border: 2px solid #fff;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+  }
+
+  .tth-header-box.hidden {
+    display: none;
   }
 
   .tth-headline {

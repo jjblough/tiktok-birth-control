@@ -5,8 +5,6 @@
   const blocks = rawBlocks as Block[];
 </script>
 
-
-
 <!-- 
 Hard-code custom code that should appear BEFORE Google Doc here. 
 This code is in +page.svelte and can be manually coded using HTML or Svelte tags.
