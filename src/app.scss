@@ -7,19 +7,19 @@ List of options here: https://getbootstrap.com/docs/5.3/customize/options/
 
 
 
-$font-family-sans-serif: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-family-sans-serif: 'Crimson Text', 'Oswald', system-ui, -apple-system, 'Segoe UI', serif;
 $font-size-base: 1.1rem;
 $font-weight-base: 400;
 $line-height-base: 1.6;
 
-$headings-font-family: 'Roboto Slab', 'Lato', serif;
+$headings-font-family: 'Abril Fatface', 'Oswald', serif;
 $headings-font-style: null;
 $headings-font-weight: 500;
 $headings-line-height: 1.2;
 $headings-color: #404040;
 
 $display-font-family: 'Crimson Text', 'Roboto Slab', Garamond, 'Times New Roman', serif;
-$display-font-style:  null;
+$display-font-style: null;
 $display-font-weight: 300;
 $display-line-height: $headings-line-height;
 
@@ -38,7 +38,7 @@ Any project-wide styles should go AFTER the Bootsrap import
 
 html, body {
   background-color: #151E3F;
-  color: #FFFFFF;
+  color: #FFFFF3;
   height: 100%;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;

@@ -141,7 +141,7 @@ $: isHeaderVisible = typeof window !== 'undefined' && heroElement ? heroElement.
     inset: 0;
     display: flex;
     flex-direction: row;
-    gap: 4px;
+    gap: 6px;
     width: 100%;
     height: 100%;
   }
@@ -157,6 +157,7 @@ $: isHeaderVisible = typeof window !== 'undefined' && heroElement ? heroElement.
     flex-direction: column;
     animation: riseUp linear infinite;
     will-change: transform;
+     gap: 6px;  /* ← Add this for vertical spacing */
   }
 
   .tth-col-strip video {
@@ -175,43 +176,45 @@ $: isHeaderVisible = typeof window !== 'undefined' && heroElement ? heroElement.
   .tth-header-box {
     position: fixed;
     top: 35%;
-    left: 20%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 45%;
     height: fit-content;
-    background: #4c86a8;
+    background: #533b4d;
     padding: 2rem 2.25rem;
-    border: 2px solid #fff;
+    border: 2px solid #fffff3;
     z-index: 10;
     transition: opacity 0.3s ease;
-  }
+}
 
   .tth-header-box.hidden {
     display: none;
   }
 
   .tth-headline {
-    color: #fff;
-    font-size: clamp(1.5rem, 2.5vw, 2.75rem);
+    color: #fffff3;
+    font-size: clamp(1.7rem, 2.5vw, 2.75rem);
     font-weight: 700;
     line-height: 1.15;
     margin: 0 0 1rem;
   }
 
   .tth-deck {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    color: #fffff3;
+    font-size: clamp(1.3rem, 1.2vw, 1.1rem);
     line-height: 1.6;
     margin: 0 0 1.25rem;
   }
 
-  .tth-byline {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.8rem;
+ .tth-byline {
+    color: #fffff3;
+        font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin: 0;
-  }
+    opacity: 0.7;
+}
 
   #headeroverlay {
     height: 100%; 

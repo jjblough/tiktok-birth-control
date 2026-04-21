@@ -24,7 +24,12 @@
   <div class="vvq-video d-none d-md-flex">
     <div class="vvq-video-inner">
       <div class="vvq-frame">
-        <iframe {src} {title} allowfullscreen></iframe>
+        <video 
+          src={src}
+          muted
+          controls
+          playsinline
+        ></video>
       </div>
     </div>
   </div>
@@ -91,7 +96,7 @@
   justify-content: center;
 }
 
-.vvq-frame iframe {
+.vvq-frame video {
   position: relative;
   width: 90%;   /* adjust to fit inside your frame image */
   height: 90%;  /* adjust to fit inside your frame image */
@@ -124,6 +129,7 @@
   }
 
   .vvq-attribution {
+       font-family: 'oswald', sans serif;
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
@@ -132,11 +138,11 @@
   .vvq-name {
     font-style: normal;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.6rem;
   }
 
   .vvq-role {
-    font-size: 0.85rem;
+    font-size: 1rem;
     opacity: 0.65;
   }
 </style>
