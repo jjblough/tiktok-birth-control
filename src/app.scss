@@ -1,13 +1,17 @@
-@import "/fonts/fonts.css";
+@import '/fonts/fonts.css';
 
 /*************
 Bootstrap configuration overrides must be BEFORE importing Bootstrap. 
 List of options here: https://getbootstrap.com/docs/5.3/customize/options/
 ***************/
 
-
-
-$font-family-sans-serif: 'Crimson Text', 'Oswald', system-ui, -apple-system, 'Segoe UI', serif;
+$font-family-sans-serif:
+	'Crimson Text',
+	'Oswald',
+	system-ui,
+	-apple-system,
+	'Segoe UI',
+	serif;
 $font-size-base: 1.1rem;
 $font-weight-base: 400;
 $line-height-base: 1.6;
@@ -23,34 +27,29 @@ $display-font-style: null;
 $display-font-weight: 300;
 $display-line-height: $headings-line-height;
 
-$small-font-size: .875em;
+$small-font-size: 0.875em;
 
-@import "bootstrap/scss/bootstrap"; /* Import all of Bootstrap’s Sass */
-
-
-
+@import 'bootstrap/scss/bootstrap'; /* Import all of Bootstrap’s Sass */
 
 /***********
 Any project-wide styles should go AFTER the Bootsrap import 
 ************/
 
-
-
-html, body {
-  background-color: #151E3F;
-  color: #FFFFF3;
-  height: 100%;
-  -webkit-font-smoothing: auto;
-  -moz-osx-font-smoothing: auto;
+html,
+body {
+	background-color: #151e3f;
+	color: #fffff3;
+	height: 100%;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
 }
-
 
 /* Break out of the centered container to full viewport width */
 .full-bleed {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
 }
