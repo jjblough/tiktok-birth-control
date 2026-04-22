@@ -1,9 +1,15 @@
 <!-- src/lib/components/ImageEmbed.svelte -->
 <script lang="ts">
+  /**
+   * Example shortcode usage:
+   * [[ImageEmbed src="photos/yourimage.jpg" alt="Description" caption="Your caption" size="large" width="400px"]]
+   */
+
   export let src: string | undefined;
   export let alt: string | undefined;
   export let caption: string | undefined;
   export let size: 'full' | 'large' | 'fit' = 'large';
+  export let width: string = '100%';
 
   let embeddedSrc: string | null = null;
   let embeddedAlt: string | null = null;
@@ -62,7 +68,7 @@
 {#if shouldRender}
   {#if size === 'full'}
     <figure class="my-3 full-bleed">
-      <img src={finalSrc} alt={finalAlt} class="img-fluid border" />
+      <img src={finalSrc} alt={finalAlt} class="img-fluid border" style="max-width: {width};" />
       {#if caption}
         <figcaption class="mt-2 text-muted small">{caption}</figcaption>
       {/if}
@@ -74,7 +80,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12 col-lg-10 col-xxl-8">
-            <img src={finalSrc} alt={finalAlt} class="img-fluid border" />
+            <img src={finalSrc} alt={finalAlt} class="img-fluid border" style="max-width: {width};" />
             {#if caption}
               <figcaption class="mt-2 text-muted small">{caption}</figcaption>
             {/if}
@@ -86,7 +92,7 @@
   {:else}
     <!-- fit -->
     <figure class="my-3">
-      <img src={finalSrc} alt={finalAlt} class="img-fluid border" />
+      <img src={finalSrc} alt={finalAlt} class="img-fluid border" style="max-width: {width};" />
       {#if caption}
         <figcaption class="mt-2 text-muted small">{caption}</figcaption>
       {/if}
