@@ -5,6 +5,8 @@
 	 * [[ImageEmbed src="photos/yourimage.jpg" alt="Description" caption="Your caption" size="large" width="400px"]]
 	 */
 
+	import { base } from '$app/paths';
+
 	export let src: string | undefined;
 	export let alt: string | undefined;
 	export let caption: string | undefined;
@@ -17,8 +19,8 @@
 	function normalizeStaticPath(raw: string) {
 		const s = raw.trim();
 		if (/^data:/i.test(s) || /^https?:\/\//i.test(s)) return s;
-		if (s.startsWith('/')) return s;
-		return '/' + s;
+		if (s.startsWith('/')) return base + s;
+		return base + '/' + s;
 	}
 
 	import { onMount } from 'svelte';
