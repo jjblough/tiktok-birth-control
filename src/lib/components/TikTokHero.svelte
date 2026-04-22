@@ -155,7 +155,6 @@
 		position: relative;
 		width: 100vw;
 		height: 200vh;
-		overflow: hidden;
 		background: #151e3f;
 		left: 50%;
 		right: 50%;
@@ -205,8 +204,8 @@
 	}
 
 	.tth-header-box {
-		position: fixed;
-		top: 35%;
+		position: sticky;
+		top: 25%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		width: 45%;
