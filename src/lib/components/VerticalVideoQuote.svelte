@@ -4,6 +4,8 @@
 	 * [[VerticalVideoQuote src="https://example.com/embed" quote="The world changed overnight." attribution="Jane Doe" role="Community Organizer"]]
 	 */
 
+	import { base } from '$app/paths';
+
 	export let src: string | undefined;
 	export let quote: string = '';
 	export let attribution: string | undefined;
@@ -21,7 +23,10 @@
 							<!-- Video: hidden on mobile, shown md+ -->
 							<div class="vvq-video d-none d-md-flex">
 								<div class="vvq-video-inner">
-									<div class="vvq-frame">
+									<div
+										class="vvq-frame"
+										style="background-image: url('{base}/photos/verticalframe.png')"
+									>
 										<video {src} muted controls playsinline></video>
 									</div>
 								</div>
