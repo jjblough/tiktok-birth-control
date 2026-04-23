@@ -205,7 +205,7 @@
 
 	.tth-header-box {
 		position: sticky;
-		top: 25%;
+		top: 60%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		width: 45%;
