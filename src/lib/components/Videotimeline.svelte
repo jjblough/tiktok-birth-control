@@ -76,9 +76,9 @@
 	onMount(() => {
 		raf = requestAnimationFrame(tick);
 	});
-	onDestroy(() => {
-		cancelAnimationFrame(raf);
-	});
+	// onDestroy(() => {
+	// 	cancelAnimationFrame(raf);
+	// });
 
 	function togglePlay() {
 		if (!videoEl) return;

@@ -75,7 +75,7 @@
   },
   {
     "type": "shortcode",
-    "name": "VideoTimeline",
+    "name": "Videotimeline",
     "attrs": {
       "src": "videos/Download (1) (1)small.mp4",
       "description": "In this 33-second video, you are looking at 46 fast-cut clips that range from 0.2 seconds to 3.4 seconds long.",
