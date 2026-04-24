@@ -14,7 +14,7 @@
 	 */
 
 	import { base } from '$app/paths';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let src: string = '';
 	export let description: string = '';
@@ -207,6 +207,7 @@
 
 <style>
 	.vt-wrap {
+		font-family: 'oswald', sans-serif;
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
@@ -299,6 +300,7 @@
 		font-size: clamp(1rem, 1.5vw, 1.25rem);
 		line-height: 1.5;
 		margin: 0;
+		color: #fffff3;
 	}
 
 	/* ── Timeline ── */
@@ -365,6 +367,7 @@
 	.vt-time {
 		font-size: 0.85rem;
 		font-variant-numeric: tabular-nums;
+		color: #fffff3;
 		opacity: 0.5;
 		min-width: 2.5rem;
 		transition: opacity 0.2s;
@@ -374,6 +377,7 @@
 		font-size: 1.05rem;
 		font-weight: 500;
 		opacity: 0.4;
+		color: #fffff3;
 		transition:
 			opacity 0.2s,
 			color 0.2s;
@@ -382,6 +386,7 @@
 	.vt-detail {
 		font-size: 0.8rem;
 		opacity: 0.35;
+		color: #fffff3;
 		transition:
 			opacity 0.2s,
 			color 0.2s;
@@ -389,7 +394,7 @@
 
 	/* Past chapters — slightly visible */
 	.vt-chapter--past .vt-dot {
-		background: #e07a5f;
+		background: #c08497;
 	}
 	.vt-chapter--past .vt-time {
 		opacity: 0.6;
@@ -399,12 +404,12 @@
 	}
 	.vt-chapter--past .vt-detail {
 		opacity: 0.5;
-		color: #e07a5f;
+		color: #c08497;
 	}
 
 	/* Active chapter — fully lit */
 	.vt-chapter--active .vt-dot {
-		background: #e07a5f;
+		background: #c08497;
 		transform: scale(1.3);
 	}
 	.vt-chapter--active .vt-time {
@@ -415,7 +420,7 @@
 	}
 	.vt-chapter--active .vt-detail {
 		opacity: 1;
-		color: #e07a5f;
+		color: #c08497;
 	}
 
 	/* Hover */

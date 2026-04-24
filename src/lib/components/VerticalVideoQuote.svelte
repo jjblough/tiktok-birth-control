@@ -10,7 +10,6 @@
 	export let quote: string = '';
 	export let attribution: string | undefined;
 	export let role: string | undefined;
-	export let title: string = '';
 </script>
 
 {#if quote || src}

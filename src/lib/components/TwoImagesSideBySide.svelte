@@ -6,10 +6,9 @@
 
 	export let src1: string | undefined;
     export let src2: string | undefined;
-	export let size: 'large' | 'fit' = 'large';
+	export let size: 'full' | 'large' | 'fit' = 'large';
 	export let credit1: string | undefined;
     export let credit2: string | undefined;
-	export let title: string = '';
     export let alt1: string = '';
     export let alt2: string = '';
 </script>
