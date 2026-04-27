@@ -96,8 +96,8 @@
 
 	.vvq-frame video {
 		position: relative;
-		width: 90%; /* adjust to fit inside your frame image */
-		height: 90%; /* adjust to fit inside your frame image */
+		width: 84%;
+		height: 85%;
 		border: none;
 	}
 	/* Quote column: fills remaining space */

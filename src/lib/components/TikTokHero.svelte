@@ -223,7 +223,8 @@
 
 	.tth-headline {
 		color: #fffff3;
-		font-size: clamp(1.7rem, 2.5vw, 2.75rem);
+		font-size: clamp(2rem, 3vw, 3rem);
+		    letter-spacing: 0.02em;
 		font-weight: 700;
 		line-height: 1.15;
 		margin: 0 0 1rem;

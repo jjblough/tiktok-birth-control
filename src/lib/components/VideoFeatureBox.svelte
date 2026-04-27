@@ -138,10 +138,13 @@
 
   .vfb-heading {
     color: #fff;
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    letter-spacing: 0.02em;
     font-weight: 700;
     line-height: 1.2;
     margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3)
   }
 
   .vfb-description {
@@ -191,7 +194,7 @@
     width: 84%;
     height: 91%;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 0px;
   }
 
   .vfb-video-area video {

@@ -246,7 +246,7 @@
 		width: 84%;
 		height: 91%;
 		overflow: hidden;
-		border-radius: 4px;
+		border-radius: 0px;
 	}
 
 	.vt-video {

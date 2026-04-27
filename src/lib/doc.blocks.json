@@ -53,7 +53,7 @@
     "attrs": {
       "p": true,
       "src": "videos/Download (3) (1).mp4",
-      "quote": "Take this as your sign to not trust your Natural Cycles app.",
+      "quote": "'Take this as your sign to not trust your Natural Cycles app.'",
       "attribution": "Tita Loyek",
       "role": "Loyek, an influencer, posted on TikTok about her negative experience with Natural Cycles. She's one of many."
     }
@@ -131,7 +131,7 @@
     "attrs": {
       "p": true,
       "src": "videos/MuskQuote.mp4",
-      "quote": "A lot of women are unaware that hormonal birth control causes depression and dramatically increases risk of suicide and changes their preferences on who they want to marry or have kids with. It changes their personality.",
+      "quote": "'A lot of women are unaware that hormonal birth control causes depression and dramatically increases risk of suicide and changes their preferences on who they want to marry or have kids with. It changes their personality.'",
       "attribution": "Elon Musk",
       "role": "Musk was a guest on the Tucker Carlson Show in April 2023. This clip, where Musk makes a claim that doctors say is categorically false, has nearly 300,000 views."
     }
@@ -157,7 +157,7 @@
     "attrs": {
       "p": true,
       "src": "videos/CassieQuote.mp4",
-      "quote": "There's a lot of all natural things that I do in my life, and I don't feel like birth control is something that's gonna ruin my health.",
+      "quote": "'There's a lot of all natural things that I do in my life, and I don't feel like birth control is something that's gonna ruin my health.'",
       "attribution": "Cassandra Gallagher",
       "role": "Gallagher went viral for a video she posted about how much she loves her birth control."
     }
@@ -170,12 +170,12 @@
     "type": "shortcode",
     "name": "VideoFeatureBox",
     "attrs": {
-      "heading": "See more",
-      "description": "These videos explain the contents of this story and demystify a few common narratives about birth control on social media. Click the videos to view in full screen.",
+      "heading": "Social media videos for a social media story",
+      "description": "These videos explain the contents of this story and demystify a few common narratives about birth control on social media. Click on each one to view in full screen.",
       "src1": "videos/Download (1) (1)small.mp4",
       "src2": "videos/Download (2) (1)_small.mp4",
-      "caption1": "Learn more about this story.",
-      "caption2": "Hear from OBGYNs about common birth control myths.",
+      "caption1": "Learn more about this story",
+      "caption2": "Hear from OBGYNs about common birth control myths",
       "color": "#533b4d",
       "bordercolor": "#fffff3"
     }
