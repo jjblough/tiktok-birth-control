@@ -13,9 +13,8 @@
 	 * Supports up to 8 chapters (t1–t8, label1–label8, detail1–detail8)
 	 */
 
-	import { base } from '$app/paths';
-	import { onMount } from 'svelte';
-
+import { base } from '$app/paths';
+import { onMount} from 'svelte';
 	export let src: string = '';
 	export let description: string = '';
 
@@ -44,23 +43,31 @@
 	export let t8: string = '';
 	export let label8: string = '';
 	export let detail8: string = '';
+	export let t9: string = ''; 
+	export let label9: string = ''; 
+	export let detail9: string = '';
+	export let t10: string = ''; 
+	export let label10: string = ''; 
+	export let detail10: string = '';
 
 	type Chapter = { time: number; label: string; detail: string };
 
 	$: chapters = (
-		[
-			{ time: t1, label: label1, detail: detail1 },
-			{ time: t2, label: label2, detail: detail2 },
-			{ time: t3, label: label3, detail: detail3 },
-			{ time: t4, label: label4, detail: detail4 },
-			{ time: t5, label: label5, detail: detail5 },
-			{ time: t6, label: label6, detail: detail6 },
-			{ time: t7, label: label7, detail: detail7 },
-			{ time: t8, label: label8, detail: detail8 }
-		] as { time: string; label: string; detail: string }[]
-	)
-		.filter((c) => c.label.trim().length > 0)
-		.map((c) => ({ time: parseFloat(c.time) || 0, label: c.label, detail: c.detail })) as Chapter[];
+  [
+    { time: t1, label: label1, detail: detail1 },
+    { time: t2, label: label2, detail: detail2 },
+    { time: t3, label: label3, detail: detail3 },
+    { time: t4, label: label4, detail: detail4 },
+    { time: t5, label: label5, detail: detail5 },
+    { time: t6, label: label6, detail: detail6 },
+    { time: t7, label: label7, detail: detail7 },
+    { time: t8, label: label8, detail: detail8 },
+    { time: t9, label: label9, detail: detail9 },
+    { time: t10, label: label10, detail: detail10 },
+  ] as { time: string; label: string; detail: string }[]
+)
+  .filter((c) => c.label.trim().length > 0)
+  .map((c) => ({ time: parseFloat(c.time) || 0, label: c.label, detail: c.detail })) as Chapter[];
 
 	let videoEl: HTMLVideoElement;
 	let currentTime = 0;
@@ -68,17 +75,15 @@
 	let muted = true;
 	let raf: number;
 
-	function tick() {
-		if (videoEl) currentTime = videoEl.currentTime;
-		raf = requestAnimationFrame(tick);
-	}
+function tick() {
+    if (typeof window === 'undefined') return;
+    if (videoEl) currentTime = videoEl.currentTime;
+    raf = requestAnimationFrame(tick);
+}
 
-	onMount(() => {
-		raf = requestAnimationFrame(tick);
-	});
-	// onDestroy(() => {
-	// 	cancelAnimationFrame(raf);
-	// });
+onMount(() => {
+    raf = requestAnimationFrame(tick);
+});
 
 	function togglePlay() {
 		if (!videoEl) return;

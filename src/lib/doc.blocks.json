@@ -75,6 +75,52 @@
   },
   {
     "type": "shortcode",
+    "name": "Videotimeline",
+    "attrs": {
+      "src": "videos/Download (1) (1)small.mp4",
+      "description": "On social media, women attribute a host of negative side effects or medical issues to their hormonal birth control, often using misreadings of medical research to back up their points. Here's an example of what that looks like.",
+      "t1": "0",
+      "label1": "A bold, attention-getting claim intended to create fear",
+      "t2": "4",
+      "label2": "Reference to female camaraderie or sisterhood",
+      "t3": "7",
+      "label3": "Seems to be specifically referencing a study, but reads from an unidentified secondary analysis",
+      "t4": "10",
+      "label4": "Connects the study to all women on hormonal birth control without qualification",
+      "t5": "13",
+      "label5": "Direct comparison to personal experience",
+      "t6": "13",
+      "label6": "List of negative side effects",
+      "detail6": "Doctors say two of these are unfounded",
+      "t7": "13",
+      "label7": "Reference to needing the 'courage' to do personal research and quit birth control",
+      "t8": "13",
+      "label8": "Lists more negative side effects",
+      "detail8": "Doctors say several of these are false",
+      "t9": "13",
+      "label9": "Attributes hormonal birth control to a shift in the type of partner a woman is attracted to",
+      "detail9": "Doctors say this is false",
+      "t10": "13",
+      "label10": "Repeated",
+      "misreading": true,
+      "of": true,
+      "the": true,
+      "study": true,
+      "which": true,
+      "has": true,
+      "not": true,
+      "yet": true,
+      "been": true,
+      "peer": true,
+      "reviewed": true
+    }
+  },
+  {
+    "type": "html",
+    "html": "<p>On social media, personal reports are rarely checked for their veracity or created by medical professionals. Social media videos tend to emphasize the risks or unlikely side effects of contraceptives that involve hormones, researcher Pfender said, while glossing over the risks of other, nonhormonal methods.</p>\n<p>Narratives like these can get traction on social media. Some unsupported claims suggest birth control can decrease fertility. Others have claimed that hormonal birth control can make women more attracted to other women than men, which was spread by Elon Musk. </p>\n<p>Unlike other social media sites, TikTok doesn&rsquo;t have a system of protections that prioritize doctors or seek to verify claims.</p>\n<p>Hanafin from Natural Cycles said that the company creates the majority of its marketing materials based on personal accounts from women. That can include users who have had a negative experience with hormonal birth control. </p>\n<p>&ldquo;Women want answers. A lot of women don&#39;t have answers, and a lot of women deal with not being believed. They deal with a lot of medical gaslighting and women&#39;s pain not taken seriously,&rdquo; Pfender said. </p>\n<p>One of the early trends related to contraceptives on TikTok involved women filming themselves during IUD insertions, recording the painful cramping they experienced without any anesthetics. According to the American College of Obstetricians and Gynecologists, IUD insertion is &ldquo;often painful or uncomfortable.&rdquo; ACOG recommended further research into addressing this pain for the comfort of patients.</p>\n<p>That fear of pain and distrust in medicine can be steered on TikTok to increase views, Pfender said. &ldquo;The videos where women were talking about being medically disenfranchised, they got significantly more engagement.&rdquo;</p>"
+  },
+  {
+    "type": "shortcode",
     "name": "ImageEmbed",
     "attrs": {
       "src": "photos/datadouble.png",
@@ -85,34 +131,7 @@
   },
   {
     "type": "html",
-    "html": "<p>On social media, personal reports are rarely checked for their veracity or created by medical professionals. Social media videos tend to emphasize the risks or unlikely side effects of contraceptives that involve hormones, researcher Pfender said, while glossing over the risks of other, nonhormonal methods.</p>\n<p>Narratives like these can get traction on social media. Some unsupported claims suggest birth control can decrease fertility. Others have claimed that hormonal birth control can make women more attracted to other women than men, which was spread by Elon Musk. </p>\n<p>Unlike other social media sites, TikTok doesn&rsquo;t have a system of protections that prioritize doctors or seek to verify claims.</p>"
-  },
-  {
-    "type": "shortcode",
-    "name": "Videotimeline",
-    "attrs": {
-      "src": "videos/Download (1) (1)small.mp4",
-      "description": "In this 33-second video, you are looking at 46 fast-cut clips that range from 0.2 seconds to 3.4 seconds long.",
-      "t1": "0",
-      "label1": "Preparing the chicken",
-      "detail1": "6 clips",
-      "t2": "4",
-      "label2": "Marinating the chicken",
-      "detail2": "3 clips",
-      "t3": "7",
-      "label3": "Making the dry batter",
-      "detail3": "7 clips",
-      "t4": "10",
-      "label4": "Frying the wings",
-      "detail4": "8 clips",
-      "t5": "13",
-      "label5": "Making the sauce",
-      "detail5": "15 clips"
-    }
-  },
-  {
-    "type": "html",
-    "html": "<p>Hanafin from Natural Cycles said that the company creates the majority of its marketing materials based on personal accounts from women. That can include users who have had a negative experience with hormonal birth control. </p>\n<p>&ldquo;Women want answers. A lot of women don&#39;t have answers, and a lot of women deal with not being believed. They deal with a lot of medical gaslighting and women&#39;s pain not taken seriously,&rdquo; Pfender said. </p>\n<p>One of the early trends related to contraceptives on TikTok involved women filming themselves during IUD insertions, recording the painful cramping they experienced without any anesthetics. According to the American College of Obstetricians and Gynecologists, IUD insertion is &ldquo;often painful or uncomfortable.&rdquo; ACOG recommended further research into addressing this pain for the comfort of patients.</p>\n<p>That fear of pain and distrust in medicine can be steered on TikTok to increase views, Pfender said. &ldquo;The videos where women were talking about being medically disenfranchised, they got significantly more engagement.&rdquo;</p>"
+    "html": ""
   },
   {
     "type": "shortcode",
