@@ -120,6 +120,7 @@ onMount(() => {
 	}, -1);
 </script>
 
+<div class="vt-outer"></div>
 <div class="vt-wrap">
 	<!-- Left: phone + video -->
 	<div class="vt-phone-col">
@@ -175,6 +176,7 @@ onMount(() => {
 		</div>
 	</div>
 
+
 	<!-- Right: description + timeline -->
 	<div class="vt-right-col">
 		{#if description}
@@ -221,10 +223,18 @@ onMount(() => {
 	}
 
 	/* ── Phone column ── */
-	.vt-phone-col {
-		flex: 0 0 auto;
-		width: 260px;
-	}
+.vt-outer {
+  position: relative;
+}
+
+.vt-phone-col {
+  flex: 0 0 auto;
+  width: 260px;
+  position: sticky;
+  top: 2rem;
+  /* Stop sticking when it reaches the bottom of the parent */
+  align-self: flex-start;
+}
 
 	.vt-phone {
 		position: relative;
