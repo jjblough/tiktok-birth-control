@@ -18,36 +18,39 @@
 			<div class="row justify-content-start">
 				<div class="col-12">
 					<div class="vvq-layout">
-					<div class="vvq-layout">
-  <!-- Quote: always visible — now on the LEFT -->
-  <blockquote class="vvq-quote">
-    <p class="vvq-quote-text">{quote}</p>
-    {#if attribution || role}
-      <footer class="vvq-attribution">
-        {#if attribution}
-          <cite class="vvq-name">{attribution}</cite>
-        {/if}
-        {#if role}
-          <span class="vvq-role">{role}</span>
-        {/if}
-      </footer>
-    {/if}
-  </blockquote>
+						<div class="vvq-layout">
+							<!-- Quote: always visible — now on the LEFT -->
+							<blockquote class="vvq-quote">
+								<p class="vvq-quote-text">{quote}</p>
+								{#if attribution || role}
+									<footer class="vvq-attribution">
+										{#if attribution}
+											<cite class="vvq-name">{attribution}</cite>
+										{/if}
+										{#if role}
+											<span class="vvq-role">{role}</span>
+										{/if}
+									</footer>
+								{/if}
+							</blockquote>
 
-  {#if src}
-    <!-- Video: hidden on mobile, shown md+ — now on the RIGHT -->
-    <div class="vvq-video d-none d-md-flex">
-      <div class="vvq-video-inner">
-        <div
-          class="vvq-frame"
-          style="background-image: url('{base}/photos/verticalframe.png')"
-        >
-          <video {src} muted controls playsinline></video>
-        </div>
-      </div>
-    </div>
-  {/if}
-</div>
+							{#if src}
+								<!-- Video: hidden on mobile, shown md+ — now on the RIGHT -->
+								<div class="vvq-video d-none d-md-flex">
+									<div class="vvq-video-inner">
+										<div class="vvq-frame" style="background-image: 'none'">
+											<img
+												src="{base}/photos/verticalframe.png"
+												alt=""
+												loading="lazy"
+												style="height: 100%; width:100%"
+											/>
+											<video {src} muted controls playsinline style="position: absolute;"></video>
+										</div>
+									</div>
+								</div>
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -102,21 +105,21 @@
 	}
 	/* Quote column: fills remaining space */
 	.vvq-quote {
-  flex: 3 1 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
-  padding: 1rem 1.5rem 1rem 0; /* was padding-left, now padding-right */
-  border-right: 3px solid currentColor; /* was border-left */
-}
+		flex: 3 1 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0;
+		padding: 1rem 1.5rem 1rem 0; /* was padding-left, now padding-right */
+		border-right: 3px solid currentColor; /* was border-left */
+	}
 
-@media (max-width: 767.98px) {
-  .vvq-quote {
-    padding-right: 0;
-    border-right: none;
-  }
-}
+	@media (max-width: 767.98px) {
+		.vvq-quote {
+			padding-right: 0;
+			border-right: none;
+		}
+	}
 
 	.vvq-quote-text {
 		font-size: clamp(1.15rem, 2.5vw, 1.5rem);
