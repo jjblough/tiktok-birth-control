@@ -87,7 +87,12 @@
 	];
 
 	// Each column gets 3 videos: one from each group of 10
-	$: columns = Array.from({ length: 10 }, (_, i) => [allSrcs[i], allSrcs[i + 10], allSrcs[i + 20]]);
+	$: columns = Array.from({ length: 10 }, (_, i) => [
+		allSrcs[i],
+		allSrcs[i + 10],
+		allSrcs[i + 10],
+		allSrcs[i + 20]
+	]);
 
 	$: heroTop = heroElement ? heroElement.getBoundingClientRect().top : 0;
 	$: isHeaderVisible =
@@ -107,20 +112,21 @@
 		{#each columns as col, colIdx}
 			<div class="tth-col-wrap">
 				<div
-					class="tth-col-strip"
-					style="
-            animation-duration: {durations[colIdx]}s;
-            animation-delay: {delays[colIdx]}s;
-          "
+					class="tth-col-group"
+					style="animation-duration: {durations[colIdx]}s; animation-delay: {delays[colIdx]}s;"
 				>
-					<!-- Videos stacked once -->
 					{#each col as src}
 						{#if src}
 							<video src="{base}/{src}" autoplay muted loop playsinline disablepictureinpicture
 							></video>
 						{/if}
 					{/each}
-					<!-- Duplicate for seamless loop -->
+				</div>
+				<div
+					class="tth-col-group"
+					aria-hidden="true"
+					style="animation-duration: {durations[colIdx]}s; animation-delay: {delays[colIdx]}s;"
+				>
 					{#each col as src}
 						{#if src}
 							<video src="{base}/{src}" autoplay muted loop playsinline disablepictureinpicture
@@ -176,17 +182,21 @@
 		flex: 1 1 0;
 		overflow: hidden;
 		position: relative;
-	}
-
-	.tth-col-strip {
 		display: flex;
 		flex-direction: column;
-		animation: riseUp linear infinite;
-		will-change: transform;
-		gap: 6px; /* ← Add this for vertical spacing */
+		gap: 6px;
 	}
 
-	.tth-col-strip video {
+	.tth-col-group {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		flex-shrink: 0;
+		animation: riseUp linear infinite;
+		will-change: transform;
+	}
+
+	.tth-col-group video {
 		width: 100%;
 		flex-shrink: 0;
 		display: block;
@@ -195,11 +205,11 @@
 	}
 
 	@keyframes riseUp {
-		0% {
+		from {
 			transform: translateY(0);
 		}
-		100% {
-			transform: translateY(-50%);
+		to {
+			transform: translateY(calc(-100% - 6px));
 		}
 	}
 
@@ -224,7 +234,7 @@
 	.tth-headline {
 		color: #fffff3;
 		font-size: clamp(2rem, 3vw, 3rem);
-		    letter-spacing: 0.02em;
+		letter-spacing: 0.02em;
 		font-weight: 700;
 		line-height: 1.15;
 		margin: 0 0 1rem;
