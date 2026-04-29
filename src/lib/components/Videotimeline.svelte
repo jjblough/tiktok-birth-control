@@ -73,16 +73,16 @@ import { onMount} from 'svelte';
 	let currentTime = 0;
 	let paused = true;
 	let muted = true;
-	let raf: number;
+	//let raf: number;
 
 function tick() {
     if (typeof window === 'undefined') return;
     if (videoEl) currentTime = videoEl.currentTime;
-    raf = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
 }
 
 onMount(() => {
-    raf = requestAnimationFrame(tick);
+   tick();
 });
 
 	function togglePlay() {

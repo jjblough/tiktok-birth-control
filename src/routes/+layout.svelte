@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import '../app.scss';
 
 	import { onMount } from 'svelte';
 
-	let { children } = $props();
+	interface Props {
+		children: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	onMount(async () => {
 		const jqueryModule = await import('jquery');
