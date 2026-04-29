@@ -126,10 +126,10 @@ onMount(() => {
 	<div class="vt-phone-col">
 		<div class="vt-phone">
 			<div class="vt-frame-bg">
-				<img src="{base}/photos/verticalframe.png" alt="" class="vt-frame-img" aria-hidden="true" />
+				<img src="{base}/photos/verticalframe.png" alt="" loading="lazy" class="vt-frame-img" aria-hidden="true" />
 				<div class="vt-video-area">
 					{#if src}
-						<video bind:this={videoEl} src="{base}/{src}" muted playsinline loop class="vt-video"
+						<video bind:this={videoEl} src="{base}/{src}" muted playsinline loop preload="none" class="vt-video"
 						></video>
 					{/if}
 				</div>
@@ -214,13 +214,16 @@ onMount(() => {
 
 <style>
 	.vt-wrap {
-		font-family: 'oswald', sans-serif;
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 3rem;
-		padding: 2rem 0;
-	}
+	font-family: 'oswald', sans-serif;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 4rem;
+	padding: 2rem 0;
+	width: min(85vw, 1100px);
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
 
 	/* ── Phone column ── */
 .vt-outer {
@@ -229,16 +232,12 @@ onMount(() => {
 
 .vt-phone-col {
   flex: 0 0 auto;
-  width: 260px;
-  position: sticky;
-  top: 2rem;
-  /* Stop sticking when it reaches the bottom of the parent */
-  align-self: flex-start;
+  width: 340px;
 }
 
 	.vt-phone {
 		position: relative;
-		width: 260px;
+		width: 340px;
 	}
 
 	.vt-frame-bg {
@@ -309,14 +308,18 @@ onMount(() => {
 		flex-direction: column;
 		gap: 1.5rem;
 		padding-top: 0.5rem;
-	}
+		max-height: 100vh;             /* Full viewport height */
+		overflow: hidden;           /* Hide overflow */
+}
 
 	.vt-description {
 		font-size: clamp(1rem, 1.5vw, 1.25rem);
 		line-height: 1.5;
 		margin: 0;
 		color: #fffff3;
-	}
+		flex-shrink: 0;             /* Prevent shrinking */
+}
+	
 
 	/* ── Timeline ── */
 	.vt-timeline {
@@ -325,6 +328,10 @@ onMount(() => {
 		flex-direction: column;
 		gap: 0;
 		padding-left: 1.5rem;
+		flex: 1;                    /* Take remaining space */
+		overflow-y: auto;           /* Enable vertical scrolling */
+		overflow-x: hidden;
+		padding-right: 1rem;
 	}
 
 	/* The vertical connecting line */
