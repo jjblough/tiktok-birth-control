@@ -1,18 +1,4 @@
 <script lang="ts">
-  /**
-   * Example shortcode usage:
-   * [[VideoFeatureBox
-   *   heading="Your heading here"
-   *   description="A short description goes here."
-   *   src1="videos/vid1.mp4"
-   *   src2="videos/vid2.mp4"
-   *   caption1="Optional caption for video 1"
-   *   caption2="Optional caption for video 2"
-   *   color="#1a1a2e"
-   *   bordercolor="#ffffff"
-   * ]]
-   */
-
   import { base } from '$app/paths';
 
   export let heading: string = '';
@@ -24,23 +10,58 @@
   export let color: string = '#533b4d';
   export let bordercolor: string = 'rgba(255,255,255,0.3)';
 
- function goFullscreen(e: MouseEvent) {
-  const video = e.currentTarget as HTMLVideoElement;
-  video.muted = false;
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
+  let videoEl1: HTMLVideoElement;
+  let videoEl2: HTMLVideoElement;
+  let paused1 = true;
+  let paused2 = true;
+  let muted1 = true;
+  let muted2 = true;
+
+  function goFullscreen(e: MouseEvent) {
+    const video = e.currentTarget as HTMLVideoElement;
+    video.muted = false;
+    
+    if (video.requestFullscreen) {
+      video.requestFullscreen().then(() => {
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'contain';
+        video.style.backgroundColor = '#000';
+      });
+    }
+
+    function handleFullscreenChange() {
+      if (!document.fullscreenElement) {
+        video.muted = true;
+        video.style.objectFit = 'cover';
+        video.style.width = '';
+        video.style.height = '';
+        document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
   }
 
-  function handleFullscreenChange() {
-    if (!document.fullscreenElement) {
-      video.muted = true;
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  function togglePlay(videoEl: HTMLVideoElement, idx: number) {
+    if (!videoEl) return;
+    if (videoEl.paused) {
+      videoEl.play();
+      if (idx === 1) paused1 = false;
+      else paused2 = false;
+    } else {
+      videoEl.pause();
+      if (idx === 1) paused1 = true;
+      else paused2 = true;
     }
   }
 
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-}
-
+  function toggleMute(videoEl: HTMLVideoElement, idx: number) {
+    if (!videoEl) return;
+    videoEl.muted = !videoEl.muted;
+    if (idx === 1) muted1 = videoEl.muted;
+    else muted2 = videoEl.muted;
+  }
 </script>
 
 <div class="vfb-outer">
@@ -62,18 +83,48 @@
       {#if src1}
         <div class="vfb-video-col">
           <div class="vfb-phone">
-            <img src="{base}/photos/verticalframe.png" alt="" class="vfb-frame" aria-hidden="true" />
+            <img src="{base}/photos/verticalframe.png" alt="" loading="lazy" class="vfb-frame" aria-hidden="true" />
+            
             <div class="vfb-video-area">
               <video
+                bind:this={videoEl1}
                 src="{base}/{src1}"
                 autoplay
                 muted
                 loop
                 playsinline
                 disablepictureinpicture
+                preload="none"
                 on:click={goFullscreen}
                 style="cursor: pointer;"
               ></video>
+            </div>
+
+            <!-- Custom controls for video 1 -->
+            <div class="vfb-controls">
+              <button class="vfb-btn" on:click={() => togglePlay(videoEl1, 1)} aria-label={paused1 ? 'Play' : 'Pause'}>
+                {#if paused1}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                {:else}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                {/if}
+              </button>
+
+              <button class="vfb-btn" on:click={() => toggleMute(videoEl1, 1)} aria-label={muted1 ? 'Unmute' : 'Mute'}>
+                {#if muted1}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18L19 19.27 20.27 18 5.27 3 4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                {:else}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                {/if}
+              </button>
             </div>
           </div>
           {#if caption1}
@@ -88,15 +139,44 @@
             <img src="{base}/photos/verticalframe.png" alt="" class="vfb-frame" aria-hidden="true" />
             <div class="vfb-video-area">
               <video
+                bind:this={videoEl2}
                 src="{base}/{src2}"
                 autoplay
                 muted
                 loop
                 playsinline
                 disablepictureinpicture
+                preload="none"
                 on:click={goFullscreen}
                 style="cursor: pointer;"
               ></video>
+            </div>
+
+            <!-- Custom controls for video 2 -->
+            <div class="vfb-controls">
+              <button class="vfb-btn" on:click={() => togglePlay(videoEl2, 2)} aria-label={paused2 ? 'Play' : 'Pause'}>
+                {#if paused2}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                {:else}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                  </svg>
+                {/if}
+              </button>
+
+              <button class="vfb-btn" on:click={() => toggleMute(videoEl2, 2)} aria-label={muted2 ? 'Unmute' : 'Mute'}>
+                {#if muted2}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.796 8.796 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18L19 19.27 20.27 18 5.27 3 4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                  </svg>
+                {:else}
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                  </svg>
+                {/if}
+              </button>
             </div>
           </div>
           {#if caption2}
@@ -202,6 +282,37 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* Custom controls */
+  .vfb-controls {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12%;
+    pointer-events: none;
+  }
+
+  .vfb-btn {
+    pointer-events: all;
+    background: rgba(0, 0, 0, 0.55);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .vfb-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
   }
 
   .vfb-caption {
