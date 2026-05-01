@@ -60,7 +60,7 @@
 											loading="lazy"
 											style="height: 100%; width:100%"
 										/>
-										<video bind:this={videoEl} {src} muted playsinline preload="none" style="position: absolute;"></video>
+										<video bind:this={videoEl} {src} muted playsinline preload="metadata" style="position: absolute;"></video>
 										
 										<!-- Custom controls -->
 										<div class="vvq-controls">

@@ -129,7 +129,7 @@ onMount(() => {
 				<img src="{base}/photos/verticalframe.png" alt="" loading="lazy" class="vt-frame-img" aria-hidden="true" />
 				<div class="vt-video-area">
 					{#if src}
-						<video bind:this={videoEl} src="{base}/{src}" muted playsinline loop preload="none" class="vt-video"
+						<video bind:this={videoEl} src="{base}/{src}" muted playsinline loop preload="metadata" class="vt-video"
 						></video>
 					{/if}
 				</div>
@@ -308,7 +308,7 @@ onMount(() => {
 		flex-direction: column;
 		gap: 1.5rem;
 		padding-top: 0.5rem;
-		max-height: 100vh;             /* Full viewport height */
+		max-height: 70vh;             /* Full viewport height */
 		overflow: hidden;           /* Hide overflow */
 }
 

@@ -7,7 +7,7 @@
 <style>
 	.subheading {
 		font-family: 'Oswald', sans-serif;
-		font-size: 1.3rem;
+		font-size: 1.5rem;
 		font-weight: 600;
 		line-height: 1.4;
 		margin: 0 0 0.75rem;
