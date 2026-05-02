@@ -72,7 +72,7 @@
 		</figure>
 	{:else if size === 'large'}
 		<!-- svelte-ignore a11y_figcaption_parent -->
-		<figure class="my-3 full-bleed">
+		<figure class="full-bleed twograph">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-12 col-lg-10 col-xxl-8">
@@ -105,6 +105,12 @@
 		margin-left: -2rem;
 		margin-right: -2rem;
 		width: calc(100% + 4rem);
+		margin-top: 2rem;
+	}
+
+	.twograph{
+		margin-top: 2rem;
+		margin-bottom: 2rem;
 	}
 
 	:global(.image-embed-fit:nth-of-type(odd):not(.breakout)) {

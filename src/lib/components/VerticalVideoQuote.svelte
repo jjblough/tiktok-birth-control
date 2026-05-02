@@ -107,6 +107,8 @@
 		gap: 2rem;
 		min-height: 400px;
 		justify-content: flex-start;
+		margin-top: 2rem;
+		margin-bottom: 2rem;
 	}
 
 	.vvq-video {
@@ -193,7 +195,7 @@
 	}
 
 	.vvq-quote-text {
-		font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+		font-size: clamp(1.15rem, 2.5vw, 1.75rem);
 		font-style: italic;
 		line-height: 1.5;
 		margin: 0 0 1rem;
