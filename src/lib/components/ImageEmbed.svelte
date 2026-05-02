@@ -110,7 +110,6 @@
 
 	.twograph{
 		margin-top: 2rem;
-		margin-bottom: 2rem;
 	}
 
 	:global(.image-embed-fit:nth-of-type(odd):not(.breakout)) {
