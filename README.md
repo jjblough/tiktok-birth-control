@@ -300,4 +300,4 @@ Google take 1-2 minutes to build the site after activating the Pages feature.
 
 ffmpeg -i input.mp4 -vf "scale=-2:300" -c:a copy output.mp4
 
-ffmpeg -i customvertical1.3.mp4 -vf "scale=-2:1000" -c:a copy customvertical1.5.mp4
+ffmpeg -i customvertical2.1.mp4 -vf "scale=-2:1000" -c:a copy customvertical2.2.mp4

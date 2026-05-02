@@ -20,5 +20,10 @@ This code is in +page.svelte and can be manually coded using HTML or Svelte tags
 </div>
 
 <!-- Hard-code any custom code that should appear AFTER Google Doc below here. -->
-<footer class="container-fluid bg-dark text-white p-5" style="margin-top: -6em">
+<footer style="
+  background-color: #c08497;
+  bottom: 0;
+  width: 100%;
+  padding: 1.25rem;
+">
 </footer>

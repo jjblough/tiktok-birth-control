@@ -90,7 +90,6 @@
 	$: columns = Array.from({ length: 10 }, (_, i) => [
 		allSrcs[i],
 		allSrcs[i + 10],
-		allSrcs[i + 10],
 		allSrcs[i + 20]
 	]);
 
