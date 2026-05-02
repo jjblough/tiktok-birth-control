@@ -124,7 +124,7 @@
     "name": "ImageEmbed",
     "attrs": {
       "src": "photos/datadouble.png",
-      "alt": "Alt text describing image",
+      "alt": "Line charts showing the cumulative use of four birth control-related hashtags on TikTok from 2021 to 2025. The left chart tracks #birthcontrol, which grew steadily to roughly 96,000 instances by 2025. The right chart tracks three hashtags on a smaller scale: #birthcontrolproblems surged sharply starting in 2022 and reached approximately 8,000 by 2025, far outpacing the others; #thepill grew gradually to about 5,000; and #naturalcycles grew more slowly to around 4,500, escalating in slope after 2024. All hashtags were near zero in 2021.",
       "size": "large"
     }
   },
