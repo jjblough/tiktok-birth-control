@@ -87,10 +87,10 @@
 	];
 
 	// Each column gets 3 videos: one from each group of 10
-	$: columns = Array.from({ length: 10 }, (_, i) => [
+	$: columns = Array.from({ length: 9 }, (_, i) => [
 		allSrcs[i],
-		allSrcs[i + 10],
-		allSrcs[i + 20]
+		allSrcs[i + 9],
+		allSrcs[i + 18]
 	]);
 
 	$: heroTop = heroElement ? heroElement.getBoundingClientRect().top : 0;
