@@ -256,7 +256,7 @@
   .vfb-phone {
     position: relative;
     width: 100%;
-    max-width: 160px;
+    max-width: 220px;
   }
 
   .vfb-frame {

@@ -60,7 +60,7 @@
 											loading="lazy"
 											style="height: 100%; width:100%"
 										/>
-										<video bind:this={videoEl} {src} muted playsinline preload="metadata" style="position: absolute;"></video>
+											<video bind:this={videoEl} {src} muted playsinline preload="metadata"></video>
 										
 										<!-- Custom controls -->
 										<div class="vvq-controls">
@@ -127,24 +127,34 @@
 	}
 
 	.vvq-frame {
-		position: absolute;
-		inset: 0;
-		background-image: url('/photos/verticalframe.png');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-	.vvq-frame video {
-		position: relative;
-		width: 84%;
-		height: 85%;
-		border: none;
-	}
+.vvq-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 
+.vvq-frame video {
+  position: absolute;
+  top: 4.5%;
+  left: 8%;
+  width: 84%;
+  height: 91%;
+  object-fit: cover;
+  border: none;
+  z-index: 2;
+}
+
+	
 	/* Custom controls — positioned inside frame */
 	.vvq-controls {
 		position: absolute;
